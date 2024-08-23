@@ -7,10 +7,11 @@
 		"inclusionProofKeys": []
 	},
 	"rpc": {
-		"modes": ["ipc", "ws"],
+		"modes": ["ipc", "ws", "http"],
 		"port": 7887,
-		"host": "127.0.0.1",
-		"allowedMethods": []
+		"host": "0.0.0.0",
+		"allowedMethods": ["*"],
+    "accessControlAllowOrigin": "*"
 	},
 	"genesis": {
 		"block": {
@@ -69,5 +70,11 @@
 			"useInvalidBLSKey": false
 		}
 	},
-	"plugins": {}
+	"plugins": {
+    "chainConnector": {
+      "receivingChainWsURL": "wss://token-factory.klayr.dev/rpc-ws",
+      "receivingChainID": "01371337",
+      "encryptedPrivateKey": "kdf=argon2id&cipher=aes-128-gcm&version=1&ciphertext=e6b8589d566208990af95e3748d83cd22893b75419338693e535eb4b6fa709f1ef16d85bc5388475bf3d3925f3a0a7a64bd84853c44eaf2916ee6a5543be9adfac63cdadbfb6e416015f9a5fc12d29628756bc094729b3b17547a94d5a13b8a97ed0273b610c2bcdd8669a762c86939f219866f247f0c68b0b10a087399fca1a&mac=971e2c72832a073639a0a6460bd6c6a81730fc7fc599913febaf794b798d73d3&salt=d7c2c05f0f91bc77&iv=e3188e588589df420edddc02cc12ae81&tag=d44c243f2c697864c3fa3c1df2c6acdc&iterations=1&parallelism=4&memorySize=2097023"
+    }
+  }
 }
