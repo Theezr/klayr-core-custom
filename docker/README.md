@@ -58,5 +58,5 @@ docker logs -f klayr-core
 export GITHUB_TOKEN=your_personal_access_token
 echo $GITHUB_TOKEN | docker login ghcr.io -u theezr --password-stdin
 docker build -t klayr/core:custom2 .
-docker tag klayr/core ghcr.io/theezr/klayr-core:custom2
+docker tag klayr/core ghcr.io/theezr/klayr-core:custom-test
 docker push ghcr.io/USERNAME/klayr-core:custom2

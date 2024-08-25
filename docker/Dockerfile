@@ -24,5 +24,7 @@ COPY --from=builder /build/node_modules/ ./node_modules/
 
 RUN npm run build
 
-ENTRYPOINT ["/app/bin/run"]
-CMD ["start", "--network", "testnet", "--enable-chain-connector-plugin"]
+# ENTRYPOINT ["/app/bin/run"]
+# CMD ["start", "--network", "testnet", "--enable-chain-connector-plugin"]
+
+CMD ["/bin/sh", "-c", "/app/bin/run blockchain download --network=testnet --output=/home/klayr/.klayr/tmp/ && /app/bin/run blockchain import /home/klayr/.klayr/tmp/blockchain.db.tar.gz && rm -f /home/klayr/.klayr/tmp/blockchain.db.tar.gz && sleep 5 && /app/bin/run start --network=testnet --enable-chain-connector-plugin"]
